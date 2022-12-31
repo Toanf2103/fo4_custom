@@ -23,18 +23,6 @@
                                   <th>PTS</th>
                               </tr>
                               <?php getAllLoai(); ?>
-                              <tr class="wpos">
-                                  <td>1</td>
-                                  <td>
-                                    <img src="https://i.pinimg.com/736x/2a/7d/4a/2a7d4a408195c618b3e410005d1ad202.jpg" alt="">
-                                    Warriorasdasdsadasds FC</td>
-                                  <td>2</td>
-                                  <td>2</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>5</td>
-                                  <td>6</td>
-                              </tr>
                           </table>
 
       </div>

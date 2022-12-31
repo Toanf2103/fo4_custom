@@ -17,23 +17,29 @@ function getAllLoai(){
             
         $result = $conn->query($sql);
         
-        
-        $i=0;
+        $i=1;
         while ($row = $result->fetch_assoc()) {
-                echo "<tr class='wpos'>
-                                  <td>{$i}</td>
-                                  <td>
-                                    <img src='{$row["hinh_anh"]}'>
-                                    {$row["ten"]}</td>
-                                  <td>{$row["so_tran"]}</td>
-                                  <td>{$row["win"]}</td>
-                                  <td>{$row["draw"]}</td>
-                                  <td>{$row["lose"]}</td>
-                                  <td>{$row["gd"]} </td>
-                                  <td>{$row["diem"]}</td>
-                              </tr>";
-                $i++;
-                
+            $so_tran = getSoTran($row['id'])['so_tran'];
+            $thang = getSoTranThang($row['id']);
+            $thua = getSoTranThua($row['id']);
+            $hoa = $so_tran - $thang - $thua;
+            $diem = $thang*3 + $hoa;            
+            $hieu_so = getSoTran($row['id'])['hieu_so'];
+            $hieu_so = $hieu_so ? $hieu_so : 0;
+
+            echo "<tr class='wpos'>
+                                <td>{$i}</td>
+                                <td>
+                                <img src='{$row["hinh_anh"]}'>
+                                {$row["ten"]}</td>
+                                <td>{$so_tran}</td>
+                                <td>{$thang}</td>
+                                <td>{$hoa}</td>
+                                <td>{$thua}</td>
+                                <td>{$hieu_so}</td>
+                                <td>{$diem}</td>
+                            </tr>";
+            $i++;            
             }
             
         }
@@ -77,6 +83,48 @@ function getLichDau($vong){
             
         }
 
+function getSoTran($id_user) {
+    global $conn;
+        
+    $sql = "SELECT count(*) as so_tran, sum(CASE
+                                        WHEN id_team1 = {$id_user} then diem_1 - diem_2
+                                        WHEN id_team2 = {$id_user} then diem_2 - diem_1
+                                    END) as hieu_so
+            from tran_dau
+            WHERE (id_team1 = {$id_user} or id_team2 = {$id_user})
+                and diem_1 is not null
+                and diem_2 is not null";
+        
+    $result = $conn->query($sql);
+
+    return $result->fetch_assoc();
+}
+
+function getSoTranThang($id_user) {
+    global $conn;
+        
+    $sql = "SELECT count(*) as so_tran
+            FROM tran_dau
+            WHERE (id_team1 = {$id_user} AND diem_1 > diem_2)
+                OR (id_team2 = {$id_user} AND diem_1 < diem_2)";
+        
+    $result = $conn->query($sql);
+
+    return $result->fetch_assoc()['so_tran'];
+}
+
+function getSoTranThua($id_user) {
+    global $conn;
+        
+    $sql = "SELECT count(*) as so_tran
+            FROM tran_dau
+            WHERE (id_team1 = {$id_user} AND diem_1 < diem_2)
+                OR (id_team2 = {$id_user} AND diem_1 > diem_2)";
+        
+    $result = $conn->query($sql);
+
+    return $result->fetch_assoc()['so_tran'];
+}
       
         
 

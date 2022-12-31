@@ -1,26 +1,5 @@
 <?php
     include('connect.php');
-    function getAllVong(){
-        global $conn;         
-        $sql = "SELECT DISTINCT tran_dau.vong FROM tran_dau";              
-        $result = $conn->query($sql);   
-        while ($row = $result->fetch_assoc()) {
-                echo "<tr class='wpos'>
-                                    <td>{$i}</td>
-                                    <td>
-                                    <img src='{$row["hinh_anh"]}'>
-                                    {$row["ten"]}</td>
-                                    <td>{$row["so_tran"]}</td>
-                                    <td>{$row["win"]}</td>
-                                    <td>{$row["draw"]}</td>
-                                    <td>{$row["lose"]}</td>
-                                    <td>{$row["gd"]} </td>
-                                    <td>{$row["diem"]}</td>
-                                </tr>";
-                $i++;
-                
-            }    
-    }
 ?>
 
 <!DOCTYPE html>
