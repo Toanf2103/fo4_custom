@@ -12,32 +12,24 @@ function getTen($id){
 
 function getAllLoai(){
     global $conn;
-        
-        $sql = "SELECT *from user order by diem";
+         
+        $sql = "CALL get_bangdiem()";
             
         $result = $conn->query($sql);
         
         $i=1;
         while ($row = $result->fetch_assoc()) {
-            $so_tran = getSoTran($row['id'])['so_tran'];
-            $thang = getSoTranThang($row['id']);
-            $thua = getSoTranThua($row['id']);
-            $hoa = $so_tran - $thang - $thua;
-            $diem = $thang*3 + $hoa;            
-            $hieu_so = getSoTran($row['id'])['hieu_so'];
-            $hieu_so = $hieu_so ? $hieu_so : 0;
-
             echo "<tr class='wpos'>
                                 <td>{$i}</td>
                                 <td>
                                 <img src='{$row["hinh_anh"]}'>
                                 {$row["ten"]}</td>
-                                <td>{$so_tran}</td>
-                                <td>{$thang}</td>
-                                <td>{$hoa}</td>
-                                <td>{$thua}</td>
-                                <td>{$hieu_so}</td>
-                                <td>{$diem}</td>
+                                <td>{$row["so_tran"]}</td>
+                                <td>{$row["thang"]}</td>
+                                <td>{$row["hoa"]}</td>
+                                <td>{$row["thua"]}</td>
+                                <td>{$row["hieu_so"]}</td>
+                                <td>{$row["diem"]}</td>
                             </tr>";
             $i++;            
             }
