@@ -1,0 +1,3 @@
+function getTran(){
+    alert("toanf");
+}

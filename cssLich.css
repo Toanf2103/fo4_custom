@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.box{
+    width: 900px;
+    margin: 100px auto;
+    
+    min-height: 300px;
+}
+.title{
+    width: 80%;
+    background-color: #efefef;
+    
+    text-align: center;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    
+}
+h2{
+    font-weight: bold;
+    color: #7d7d7d;
+}
+.team{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.item{
+    margin-right: 30px;
+}
+img{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+.team p{
+    font-size: 30px;
+}
+.ty_so p{
+    margin-top: 25px;
+    font-size: 50px;
+
+}
+a{
+    font-size: 50px;
+    margin-bottom: 10px;
+    display: block;
+}
