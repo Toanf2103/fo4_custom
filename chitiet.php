@@ -1,3 +1,7 @@
+<?php
+    $id=$_REQUEST['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,40 @@
     <link rel="icon" type="image/png" href="logo.png">
     <title>Đăk Mil fo4</title>
     <link rel="stylesheet" href="cssLichdau.css">
+    <style>
+        h1{
+            display:flex;
+            align-items:center;
+            justify-content:left;
+        }
+        h1 a{
+            display:inline-block;
+            padding: 0px 20px;
+            text-align:left;
+            font-size:20px;
+            flex:2;
+        }
+        h1 a:hover{
+            text-decoration:underline;
+            font-size:25px;
+        }
+        h1 span{
+            flex:3;
+            text-align:left;
+        }
+        @media screen and (max-width: 600px) {
+            h1 a{
+                font-size:10px;
+            }
+            h1 a:hover{
+                flex:3;
+                font-size:25px;
+            }
+            h1 span{
+                font-size:15px;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -15,17 +53,18 @@
     </div>
     
     <div id="container">
-    <h1><a href=".?act=bang_xep_hang">Bảng xếp hạng</a></h1>
+    <h1>
+        <a href=".?act=bang_xep_hang">Bảng xếp hạng</a>
+        <span>Lịch đấu <?php echo getTenById($id) ?></span>
+    </h1>
+    <div class="box">
     <?php    
-            $vong=getSoVongDau();
-
-            for ($i = 1; $i <= $vong; $i++) {
-                echo "<div class='box'>";
-                echo "<p>Vòng {$i}</p>";
-                getLichDau($i);
-                echo "</div>";
-            }
+        
+        getTranById($id);    
         ?>
+    </div>
+    
+
         <!-- <div class="box">
             <p>
                 Vòng 1

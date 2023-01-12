@@ -45,7 +45,10 @@ function xacnhan(){
                     
                     if(check==1){
                         alert("Thêm xong rồi mày!");
+                        
                     }
+                    document.getElementById('team1').value ='';
+                        document.getElementById('team2').value ='';
                         
                     // el = document.querySelector('tbody');
                     // el.innerHTML=xml.responseText;          

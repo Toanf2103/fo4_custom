@@ -1,5 +1,13 @@
 <?php
     include('connect.php');
+    function getSoVongDau(){
+        global $conn;
+        $sql="SELECT MAX(vong) as max FROM tran_dau";
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            return $row['max']; 
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -46,13 +54,13 @@
         
         <span>Chọn vòng</span>
         <select name="vong" id="vong" onchange='getTran()'>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
+            
+            <?php
+                $vong=getSoVongDau();
+                for($i=1;$i<=$vong;$i++){
+                    echo "<option value='{$i}'>{$i}</option>";
+                }
+            ?>
             
         </select>
         <span>Chọn trận</span>

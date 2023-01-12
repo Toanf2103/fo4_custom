@@ -37,6 +37,9 @@
         $conn->close();
         return false;
     }
+
+    
+
     $action = isset($_REQUEST['actAjax']) ? $_REQUEST['actAjax'] : '';
     switch ($action) {
         case 'getTran':

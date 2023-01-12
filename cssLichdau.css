@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins 500","Noto Sans Regular","Helvetica Neue",Arial,sans-serif;
+}
+body{
+    
+    
+    padding: 50px 0px;
+    background-color: #fec310;
+
+}
+h1{
+    background-color: rgb(238, 238, 228);
+    padding: 10px;
+    width: 80%;
+    color: rgb(197, 42, 97);
+    font-size: 30px;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 7px;
+}
+h1 a{
+    color: rgb(197, 42, 97);
+    text-decoration: none;
+}
+h1:hover{
+    background-color: #49bce3;
+}
+.bg{
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-clip: content-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#container {
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-around;
+    /* transform: translate(50%); */
+      
+}
+  
+.box {
+    width: 45%;
+    
+    background-color: #7F1431;
+    
+    text-align: center;
+    
+    margin-bottom: 30px;
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+p{
+    margin-bottom: 20px;
+    color: #fec310;
+    font-size: 25px;
+    font-weight: bold;
+}
+.item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 15px;
+    margin-bottom: 15px;
+    height: 70px;
+    flex-basis: 80px;
+}
+.item .team{
+    display: flex;
+    margin: 5px 15px;
+    
+    align-items: center;
+    flex: 1;
+    
+}
+.item .team .icon{
+    display: inline-block;
+    width: 30px;
+    height: auto;
+    margin: 0px 8px;
+}
+.start{
+    justify-content: right;
+}
+.end{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    
+}
+.item .tyso{
+    font-size: 25px;
+    letter-spacing: 8px;
+    text-align: center;
+    flex: 1; 
+}
+@media screen and (max-width: 600px) {
+    .item .tyso{
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-align: center;
+        flex: 1;
+    }
+    .item .team .icon{
+        
+        width: 20px;
+        height: auto;
+       
+    }
+  }
+.item:hover{
+    background-color: #49bce3;
+    cursor: pointer;
+}
+
